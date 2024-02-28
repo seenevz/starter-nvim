@@ -118,6 +118,7 @@ vim.opt.breakindent = true
 -- Set fold method
 vim.opt.foldmethod = 'expr'
 vim.opt.foldexpr = 'nvim_treesitter#foldexpr()'
+vim.opt.foldlevelstart = 99
 
 -- Save undo history
 vim.opt.undofile = true
