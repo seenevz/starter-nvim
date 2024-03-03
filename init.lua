@@ -61,7 +61,7 @@ Kickstart Guide:
     about reading, navigating and searching the builtin help documentation.
 
     This should be the first place you go to look when you're stuck or confused
-    with something. It's one of my favorite neovim features.
+    with something. It's one of my avorite neovim features.
 
     MOST IMPORTANTLY, we provide a keymap "<space>sh" to [s]earch the [h]elp documentation,
     which is very useful when you're not sure exactly what you're looking for.
@@ -126,6 +126,10 @@ vim.opt.undofile = true
 -- Case-insensitive searching UNLESS \C or capital in search
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
+
+-- Enable spell
+vim.opt.spelllang = 'en_gb'
+vim.opt.spell = true
 
 -- Keep signcolumn on by default
 vim.opt.signcolumn = 'yes'
@@ -378,6 +382,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sr', builtin.resume, { desc = '[S]earch [R]esume' })
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
+      vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = '[G]it [S]tatus' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
