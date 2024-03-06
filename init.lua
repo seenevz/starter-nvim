@@ -61,7 +61,7 @@ Kickstart Guide:
     about reading, navigating and searching the builtin help documentation.
 
     This should be the first place you go to look when you're stuck or confused
-    with something. It's one of my avorite neovim features.
+    with something. It's one of my favourite neovim features.
 
     MOST IMPORTANTLY, we provide a keymap "<space>sh" to [s]earch the [h]elp documentation,
     which is very useful when you're not sure exactly what you're looking for.
@@ -178,6 +178,12 @@ vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagn
 -- or just use <C-\><C-n> to exit terminal mode
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 
+-- Setup LazyGit shortcuts
+-- https://github.com/jesseduffield/lazygit?tab=readme-ov-file#usage
+vim.keymap.set('n', '<leader>gg', function()
+  vim.cmd.terminal 'lazygit'
+end, { desc = 'Lazy[G]it' })
+
 -- TIP: Disable arrow keys in normal mode
 -- vim.keymap.set('n', '<left>', '<cmd>echo "Use h to move!!"<CR>')
 -- vim.keymap.set('n', '<right>', '<cmd>echo "Use l to move!!"<CR>')
@@ -204,6 +210,18 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   group = vim.api.nvim_create_augroup('kickstart-highlight-yank', { clear = true }),
   callback = function()
     vim.highlight.on_yank()
+  end,
+})
+
+-- Set automatically terminal mode on entering
+vim.api.nvim_create_autocmd('TermOpen', {
+  desc = 'Set automatically terminal mode on entering',
+  group = vim.api.nvim_create_augroup('kickstart-auto-terminal-mode', { clear = true }),
+  callback = function()
+    vim.wo.spell = false
+    vim.wo.number = false
+    vim.wo.relativenumber = false
+    vim.cmd.startinsert()
   end,
 })
 
@@ -290,6 +308,7 @@ require('lazy').setup({
         ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
+        ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
       }
     end,
   },
@@ -383,6 +402,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>s.', builtin.oldfiles, { desc = '[S]earch Recent Files ("." for repeat)' })
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
       vim.keymap.set('n', '<leader>gs', builtin.git_status, { desc = '[G]it [S]tatus' })
+      vim.keymap.set('n', '<leader>gc', builtin.git_commits, { desc = '[G]it [C]ommits' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
