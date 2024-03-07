@@ -768,7 +768,6 @@ require('lazy').setup({
           storageclass = { italic = true }, -- static, register, volatile, etc
           structure = { italic = true }, -- struct, union, enum, etc
           annotation = { italic = true },
-          tag_attribute = { italic = true }, -- attribute of tag in reactjs
         },
         filter = 'spectrum',
       }
