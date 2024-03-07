@@ -754,6 +754,7 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`
+    -- current is https://github.com/loctvl842/monokai-pro.nvim
     'loctvl842/monokai-pro.nvim',
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
     priority = 1000, -- make sure to load this before all the other start plugins
@@ -775,7 +776,13 @@ require('lazy').setup({
       vim.cmd.colorscheme 'monokai-pro'
 
       -- You can configure highlights by doing something like
-      vim.cmd.hi 'Comment gui=none'
+      -- vim.cmd.hi 'Comment gui=none'
+      vim.cmd [[
+        highlight SpellBad guifg=none guisp=#196cfc
+        highlight SpellCap guifg=none guisp=#196cfc
+        highlight SpellRare guifg=none guisp=#196cfc
+        highlight SpellLocal guifg=none guisp=#196cfc
+      ]]
     end,
   },
 
