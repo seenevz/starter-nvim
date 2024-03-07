@@ -90,6 +90,12 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Set term value to wezterm for better compatibility
+-- It needs wezterm term file to work properly https://wezfurlong.org/wezterm/faq.html#how-do-i-enable-undercurl-curly-underlines
+vim.g.term = 'wezterm'
+-- This is an alternative config that can be used to make things work on tmux
+-- vim.g.term = 'tmux-256color'
+
 -- [[ Setting options ]]
 -- See `:help vim.opt`
 -- NOTE: You can change these options as you wish!
@@ -754,6 +760,7 @@ require('lazy').setup({
     -- change the command in the config to whatever the name of that colorscheme is
     --
     -- If you want to see what colorschemes are already installed, you can use `:Telescope colorscheme`
+
     -- current is https://github.com/loctvl842/monokai-pro.nvim
     'loctvl842/monokai-pro.nvim',
     lazy = false, -- make sure we load this during startup if it is your main colorscheme
