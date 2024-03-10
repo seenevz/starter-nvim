@@ -380,7 +380,7 @@ require('lazy').setup({
         --  All the info you're looking for is in `:help telescope.setup()`
         --
         defaults = {
-          intial_mode = 'normal',
+          initial_mode = 'normal',
         },
         pickers = {
           find_files = { no_ignore = true },
